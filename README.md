@@ -1,18 +1,27 @@
-# JaCaMo Template
+# JaCaMo by exercises — Exercise 07 — Await with blocking commands: Implementing artifacts for I/O
 
-A template repository for creating new JaCaMo-based applications.
+In this exercise,
+you'll see two agents communicating by means of two artifacts that function as network ports based on UDP sockets.
+These "port" artifacts expose a "send"
+and "receive" operation,
+the first to send a message through the port and the second to wait until a message is received on the socket,
+blocking the execution.
+Another operation that the artifact exposes is the "startReceiving" one,
+which allows to be notified as soon as a new message has been received, if an agent decides to focus the artifact.
+There's also the "stopReceiving" operation,
+to stop being notified, and the internal operation "receiving"
+to be used for continually checking if new messages have arrived.
+The difference with the previous exercise is that the artifact is not "await"-ing for some time,
+but rather for the completion of an operation.
+It exists a particular method for doing so, which receives an object which must implement the "IBlockingCmd" interface.
+You're asked also to implement a class deriving from the interface representing (and containing) the "receive"
+operation made by the socket.
+An already implemented class is given to wrap all the behavior needed to work with a UDP socket.
 
-## What?
+The agents in this exercise are a "sender" one,
+sending two messages to another, and a "receiver" one, waiting for those messages.
+The first message is received through the "receive" operation, the second as a signal from the "port" artifact.
 
-Exactly what the title says,
-this is a template repository to create hassle-free JaCaMo applications without starting from scratch.
-You can adjust the "config.jcm" file as you wish to add or remove all the configuration that you need,
-but please **don't** touch the "asl-path", "java-path" and "org-path" properties.
+## Solution
 
-## How to run it?
-
-You can use Gradle to run it,
-either using the Gradle wrapper in the repository or using the Gradle tool installed on your system.
-You don't even need to specify the task name; the default one will launch your application.
-But if you really need to know it, for example, for running it after pressing the "play" button on your preferred IDE,
-add the **run** task to your configurations and see the magic happen!
+All solution files are marked with the "solution" suffix, don't open them before solving the exercise!
