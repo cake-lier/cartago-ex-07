@@ -1,7 +1,7 @@
 !receiver.
 
 +!receiver : true <-
-    makeArtifact("receiverPort", "Port", [3002], PortId);
+    makeArtifact("receiverPort", "io.github.cakelier.Port", [3002], PortId);
     receive(Content, Sender);
     println("Received a message from ", Sender, " which was: ", Content);
     focus(PortId);

@@ -1,7 +1,7 @@
 !sender.
 
 +!sender : true <-
-    makeArtifact("senderPort", "Port", [3001], _);
+    makeArtifact("senderPort", "io.github.cakelier.Port", [3001], _);
     send("Ping!", 3002);
     send("Pong!", 3002).
 

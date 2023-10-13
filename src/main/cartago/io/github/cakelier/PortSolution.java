@@ -1,3 +1,5 @@
+package io.github.cakelier;
+
 import cartago.*;
 
 import java.io.IOException;
@@ -5,10 +7,10 @@ import java.net.SocketException;
 import java.util.Optional;
 
 public class PortSolution extends Artifact {
-    Socket socket;
-    boolean isReceiving;
+    private Socket socket;
+    private boolean isReceiving;
 
-    void init(final int port) {
+    private void init(final int port) {
         this.isReceiving = false;
         try {
             this.socket = new Socket(port);
@@ -18,7 +20,7 @@ public class PortSolution extends Artifact {
     }
 
     @OPERATION
-    void send(final String message, final int port) {
+    public void send(final String message, final int port) {
         try {
             this.socket.send(message, port);
         } catch (final IOException e) {
@@ -27,7 +29,7 @@ public class PortSolution extends Artifact {
     }
 
     @OPERATION
-    void receive(final OpFeedbackParam<String> content, final OpFeedbackParam<String> sender) {
+    public void receive(final OpFeedbackParam<String> content, final OpFeedbackParam<String> sender) {
         final var receiveCommand = new ReceiveCommand();
         await(receiveCommand);
         receiveCommand.getMessage().ifPresentOrElse(
@@ -43,7 +45,7 @@ public class PortSolution extends Artifact {
     }
 
     @OPERATION
-    void startReceiving() {
+    public void startReceiving() {
         if (!this.isReceiving) {
             this.isReceiving = true;
             execInternalOp("receiving");
@@ -51,12 +53,12 @@ public class PortSolution extends Artifact {
     }
 
     @OPERATION
-    void stopReceiving() {
+    public void stopReceiving() {
         this.isReceiving = false;
     }
 
     @INTERNAL_OPERATION
-    void receiving() {
+    private void receiving() {
         while (this.isReceiving) {
             final var receiveCommand = new ReceiveCommand();
             await(receiveCommand);

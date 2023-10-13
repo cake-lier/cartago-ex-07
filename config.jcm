@@ -1,4 +1,4 @@
-mas hello_world {
+mas exercise_07 {
     agent sender_agent
     agent receiver_agent
 

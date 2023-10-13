@@ -1,11 +1,13 @@
+package io.github.cakelier;
+
 import cartago.*;
 
 import java.net.SocketException;
 
 public class Port extends Artifact {
-    Socket socket;
+    private Socket socket;
 
-    void init(final int port) {
+    private void init(final int port) {
         try {
             this.socket = new Socket(port);
         } catch (final SocketException e) {
@@ -14,27 +16,27 @@ public class Port extends Artifact {
     }
 
     @OPERATION
-    void send(final String message, final int port) {
+    public void send(final String message, final int port) {
         // Add your implementation for the "send" operation here
     }
 
     @OPERATION
-    void receive(final OpFeedbackParam<String> content, final OpFeedbackParam<String> sender) {
+    public void receive(final OpFeedbackParam<String> content, final OpFeedbackParam<String> sender) {
         // Add your implementation for the "receive" command here
     }
 
     @OPERATION
-    void startReceiving() {
+    public void startReceiving() {
         // Add your implementation for the "startReceiving" operation here
     }
 
     @OPERATION
-    void stopReceiving() {
+    public void stopReceiving() {
         // Add your implementation for the "stopReceiving" operation here
     }
 
     @INTERNAL_OPERATION
-    void receiving() {
+    private void receiving() {
         // Add your implementation for the "receiving" internal operation here
     }
 
